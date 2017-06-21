@@ -238,14 +238,23 @@ class ViewController: JSQMessagesViewController {
                 }
                 break
             case "locate_amenity":
-                               if (response.entities.count >= 1){
-                                if(response.entities[0].value != "restaurant"){
-                                    self.openNavigation(response.entities[0].value)
-                                }
+                
+                if (response.entities.count >= 1){
+                    if(response.entities[0].value != "restaurant"){
+                        self.openNavigation(response.entities[0].value)
+                    }
                 }
                 
-                    
+                break
                 
+            case "greetings":
+                
+                if (response.entities.count >= 1){
+                    if(response.entities[0].value != "restaurant"){
+                        self.openNavigation(response.entities[0].value)
+                    }
+                }
+
                 break
                 default:
                 
