@@ -203,7 +203,7 @@ class ViewController: JSQMessagesViewController {
             // Handle Watson response
             print(response)
             
-            var confidence = 0.00
+            var confidence = 0.75
             var currentIntent = ""
             for item in response.intents{
                 
@@ -217,9 +217,9 @@ class ViewController: JSQMessagesViewController {
                 if(!watsonMessage.isEmpty){
                     
                     
-                    // Create message based on Watson response
+                    if(currentIntent != ""){  // Create message based on Watson response
                     self.displayMessage(watsonMessage)
-                    
+                    }
                 }
             }
 
@@ -250,7 +250,8 @@ class ViewController: JSQMessagesViewController {
                         self.openNavigation(response.entities[0].value)
                     }
                 }else{
-                    self.displayMessage("Sorry I didn't get that!")
+                    self.getWolframAlphaResponse((response.input?.text)!)
+                  //  self.displayMessage("Sorry I didn't get that!")
                 }
 
                 
@@ -276,17 +277,37 @@ class ViewController: JSQMessagesViewController {
             case "wiki_search":
                 if (response.entities.count >= 1){
                     for entity in response.entities{
-                        self.getWikiIntro(entity.value)
-                        
+                        if(entity.entity == "sys-number"){
+                            self.getWolframAlphaResponse((response.input?.text)!)
+
+                        }else{
+                        self.getWikiIntro(entity.value, (response.input?.text)!)
+                        }
                         
                     }
                 }else{
-                    self.displayMessage("Sorry I didn't get that!")
+                    self.getWolframAlphaResponse((response.input?.text)!)
+
+                   // self.displayMessage("Sorry I didn't get that!")
                 }
 
                 break
-                default:
                 
+                
+                
+            case "out_of_scope":
+                
+                self.getWolframAlphaResponse((response.input?.text)!)
+                break
+                
+            case "information_request":
+                self.getWolframAlphaResponse((response.input?.text)!)
+                
+                break
+                
+                default:
+                    self.getWolframAlphaResponse((response.input?.text)!)
+
                 break
                 
             }
@@ -488,8 +509,10 @@ class ViewController: JSQMessagesViewController {
         }
     }
     
-    func getWikiIntro(_ query : String)
+    func getWikiIntro(_ query : String, _ completeQuery : String)
     {
+        
+        print("Getting data form wikipedia...")
         let modifQuery = query.replacingOccurrences(of: " ", with: "+")
         let url = URL(string: "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles="+modifQuery+"&indexpageids=true")
         
@@ -513,8 +536,11 @@ class ViewController: JSQMessagesViewController {
                             if  let extract = content["extract"] as? String{
                                 
                                 print(extract)
+                                if(extract == "" || extract == " "){
+                                    self.getWolframAlphaResponse(completeQuery)
+                                }else{
                                 self.displayMessage(extract)
-                                
+                                }
                             }else{
                                 
                                 self.displayMessage("No Results found!")
@@ -535,6 +561,44 @@ class ViewController: JSQMessagesViewController {
         }
         task.resume()
         
+    }
+    
+    
+    
+    
+    func getWolframAlphaResponse(_ query : String){
+        print("Getting data from wolfram alpha...")
+        let escapedString = query.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
+        let url = URL(string: "https://api.wolframalpha.com/v1/result?i="+escapedString!+"&appid=G82EPV-WYXHWHVQRY")
+        let task = URLSession.shared.dataTask(with:url!){
+            (data, response, error) in
+            
+            if(error != nil){
+                
+                print("Error")
+            }else{
+                
+                
+                if let data = data{
+                    
+                    
+                    let unwrappedData = NSMutableString(data: data, encoding: String.Encoding.utf8.rawValue)
+                    print(unwrappedData)
+                    if(unwrappedData != "Wolfram|Alpha did not understand your input"){
+                        self.displayMessage(unwrappedData! as String)
+                        
+                    }else{
+                        self.displayMessage("Sorry I didn't get that!")
+   
+                    }
+                    
+                }
+            }
+            
+            
+            
+        }
+        task.resume()
     }
     
     
