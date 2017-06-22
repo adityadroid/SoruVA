@@ -177,7 +177,10 @@ class ViewController: JSQMessagesViewController {
         if message.senderId == senderId {
             cell.textView!.textColor = UIColor.black
         } else {
-            cell.textView!.textColor = UIColor.white
+            if let tv = cell.textView{
+                tv.textColor = UIColor.white
+                
+            }
         }
         return cell
     }
@@ -235,7 +238,10 @@ class ViewController: JSQMessagesViewController {
                         break
                         }
                     }
+                }else{
+                    self.displayMessage("Sorry I didn't get that!")
                 }
+
                 break
             case "locate_amenity":
                 
@@ -243,7 +249,10 @@ class ViewController: JSQMessagesViewController {
                     if(response.entities[0].value != "restaurant"){
                         self.openNavigation(response.entities[0].value)
                     }
+                }else{
+                    self.displayMessage("Sorry I didn't get that!")
                 }
+
                 
                 break
                 
@@ -253,6 +262,26 @@ class ViewController: JSQMessagesViewController {
                     if(response.entities[0].value != "restaurant"){
                         self.openNavigation(response.entities[0].value)
                     }
+                }
+
+                break
+                
+                
+            case "image_search":
+                
+                self.getImage((response.input?.text)!)
+                break
+                
+                
+            case "wiki_search":
+                if (response.entities.count >= 1){
+                    for entity in response.entities{
+                        self.getWikiIntro(entity.value)
+                        
+                        
+                    }
+                }else{
+                    self.displayMessage("Sorry I didn't get that!")
                 }
 
                 break
@@ -339,6 +368,83 @@ class ViewController: JSQMessagesViewController {
         }
         
     }
+    
+    
+    func getImage(_ query : String){
+        let comp = query.components(separatedBy: " ")
+        let defaultWords = 1
+//        for i in (0..<comp.count).reversed(){
+//            
+//            if(comp[i]=="a"){
+//                defaultWords = comp.count-i
+//                break
+//            }
+//            
+//        }
+        var trimmedQuery = ""
+        for i in (comp.count-defaultWords..<comp.count){
+            
+            trimmedQuery = trimmedQuery + comp[i]
+            if(i != comp.count-1){
+            trimmedQuery = trimmedQuery + "+"
+            }
+        }
+            print(trimmedQuery)
+        
+        print("looking for image...")
+        let url = URL(string: "https://api.unsplash.com/search/photos/?client_id=b0204a5caa5a8224f7a0946b7249f8c7b3859b9f7a8c7ca6c173cfd7cce988a9&query="+trimmedQuery)
+        let task = URLSession.shared.dataTask(with: url!) {
+            (data, response, error) in
+                
+                if(error != nil){
+                    
+                    print(error ?? "nil")
+                }else{
+                    
+                  if let data = data {
+                    
+                    print(data)
+                    do{
+                        let jsonResult = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers)  as! [String:Any]
+                        if let results = jsonResult["results"] as? [[String : AnyObject]]{
+                           // print("results")
+                            if(results.count>0){
+                             let result1 = results[0]
+                         //   print(result1)
+                            if let urls = result1["urls"] as? [String : AnyObject]{
+                          //      print("urls")
+                             //   print(urls)
+                            //
+                                
+                                if let regular = urls["regular"] as? String{
+                                    
+                                    print(regular)
+                                    self.downloadImage(url: URL(string: regular)!)
+                                    //do something with the image
+                                   // UIImage(data: )
+
+                                }
+                                
+                            }
+                            
+                            }else{
+                                
+                                print("No Results")
+                                
+                            }}
+                        
+                    }catch{
+                            print("JSONconversion failed")
+                    }
+                    }
+                }
+                
+                
+            
+        }
+        task.resume()
+      
+    }
     func openNavigation(_ loc : String){
         let loc2 = loc.replacingOccurrences(of: " ", with: "+")
         let url  = URL(string:  "http://maps.apple.com/?q="+loc2)
@@ -348,4 +454,89 @@ class ViewController: JSQMessagesViewController {
             UIApplication.shared.openURL(url!)
         }
     }
+    
+    
+    
+    func getDataFromUrl(url: URL, completion: @escaping (_ data: Data?, _  response: URLResponse?, _ error: Error?) -> Void) {
+        URLSession.shared.dataTask(with: url) {
+            (data, response, error) in
+            completion(data, response, error)
+            }.resume()
+    }
+    
+    
+    func downloadImage(url: URL) {
+        print("Download Started")
+        getDataFromUrl(url: url) { (data, response, error)  in
+            guard let data = data, error == nil else { return }
+            print(response?.suggestedFilename ?? url.lastPathComponent)
+            print("Download Finished")
+            DispatchQueue.main.async() { () -> Void in
+              
+                //display the image
+                let image  = UIImage(data: data)
+                
+                
+                let mediaItem = JSQPhotoMediaItem(image: image)
+                let JSQmessage = JSQMessage(senderId: "Watson", displayName: "Watson", media: mediaItem)
+                //let JSQmessage = JSQMessage(senderId: "Watson", displayName: "Watson", text: msg)
+                // Add message to conversation message array
+                self.conversationMessages.append(JSQmessage!)
+                self.finishSendingMessage()
+                
+            }
+        }
+    }
+    
+    func getWikiIntro(_ query : String)
+    {
+        let modifQuery = query.replacingOccurrences(of: " ", with: "+")
+        let url = URL(string: "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles="+modifQuery+"&indexpageids=true")
+        
+        let task = URLSession.shared.dataTask(with:url!){
+        (data, response, error) in
+            
+            if( error != nil ){
+                print(error!)
+            }else{
+                
+                if let data = data{
+                    do{
+                    let jsonObject =  try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as! [String: Any]
+                    
+                        if let query = jsonObject["query"] as? [String: Any]{
+                            print(query)
+                            let pageids = query["pageids"] as! [String]
+                            let pageID = pageids[0]
+                            let pages = query["pages"] as! [String: AnyObject]
+                            let content = pages[pageID] as! [ String : AnyObject]
+                            if  let extract = content["extract"] as? String{
+                                
+                                print(extract)
+                                self.displayMessage(extract)
+                                
+                            }else{
+                                
+                                self.displayMessage("No Results found!")
+                            }
+                            
+                        }
+                        
+                    
+                    }catch{
+                        
+                        print("JSON Serialization Failed!")
+                    }
+                    
+                }
+            }
+            
+            
+        }
+        task.resume()
+        
+    }
+    
+    
+    
 }
