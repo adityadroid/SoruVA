@@ -24,6 +24,7 @@ class ViewController: JSQMessagesViewController {
     var conversation : Conversation!
     var context: Context?
     var workspaceID: String!
+    var currentIntent : String = ""
     
     override func viewDidLoad() {
         
@@ -196,6 +197,7 @@ class ViewController: JSQMessagesViewController {
         }
         
         // Get response from Watson based on user text
+        if(!text.contains("-")){
         let messageRequest = MessageRequest(text: text, context: self.context)
         conversation.message(withWorkspace: self.workspaceID, request: messageRequest, failure: failConversationWithError) { response in
             // Set current context
@@ -305,12 +307,38 @@ class ViewController: JSQMessagesViewController {
                 
                 break
                 
+                
+            case "song_name":
+             //   for watsonMessage in response.output.text{
+                    
+                    //if(watsonMessage == "Sure, Respond with \"Song Name - Artist Name\""){
+                        let items = response.input?.text.components(separatedBy: "-")
+                        print(items)
+                        self.getLyrics(items![0], items![1])
+                        
+                   // }
+               // }
+               
+                
+                break
+            
+            case "weather","lyrics_search":
+                break
+            
                 default:
                     self.getWolframAlphaResponse((response.input?.text)!)
 
                 break
                 
             }
+            
+        }
+    
+        }else{
+            
+            let items = text.components(separatedBy: "-")
+            print(items)
+            self.getLyrics(items[0], items[1])
             
         }
     }
@@ -601,6 +629,69 @@ class ViewController: JSQMessagesViewController {
         task.resume()
     }
     
+    
+    func getLyrics( _ song : String, _ artist: String){
+        
+        
+//        let escapedString = "http://api.chartlyrics.com/apiv1.asmx/SearchLyricDirect?artist="+artist.lowercased().addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!+"&song=" + song.lowercased().addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+        
+        let escapedString = "http://www.azlyrics.com/lyrics/"+artist.lowercased().replacingOccurrences(of: " ", with: "")+"/"+song.lowercased().replacingOccurrences(of: " ", with: "").replacingOccurrences(of: "'", with: "")+".html"
+      print(escapedString)
+        let url = URL(string: escapedString)
+        
+        let task = URLSession.shared.dataTask(with: url!){
+             (data, response, error) in
+            
+            if(error != nil){
+                
+                print(error!)
+            }else{
+                
+                if let data = data {
+                    
+                    
+                    let unwrappedData = NSMutableString(data: data, encoding: String.Encoding.utf8.rawValue)
+                    //print(unwrappedData!)
+                    
+                    //let startIdentifier = "<Lyric>"
+                   // let endIdentifier = "</Lyric>"
+                    let startIdentifier = "<!-- Usage of azlyrics.com content by any third-party lyrics provider is prohibited by our licensing agreement. Sorry about that. -->"
+                    let endIdentifier = "</div>"
+                    
+                    let items = unwrappedData?.components(separatedBy: startIdentifier)
+                    if((items?.count)!>1){
+                        
+                        let items2 = items?[1].components(separatedBy: endIdentifier)
+                        if let lyrics = items2?[0]{
+                            
+                            print(lyrics)
+                            var modifLyrics = lyrics.replacingOccurrences(of: "<br>", with: "")
+                            modifLyrics = modifLyrics.replacingOccurrences(of: "<br><br>", with: "\n")
+                            modifLyrics = modifLyrics.replacingOccurrences(of: "</i>", with: "")
+                            modifLyrics = modifLyrics.replacingOccurrences(of: "<i>", with: "")
+                            modifLyrics = modifLyrics.replacingOccurrences(of: "&amp;", with: "&")
+                            
+                            self.displayMessage(modifLyrics)
+                        }else{
+                            
+                            self.displayMessage("Looks like I don't have lyrics for that song yet! Make sure the artist and the song are spelt correctly!")
+                        }
+                        
+                        
+                    }else{
+                        self.displayMessage("Looks like I don't have lyrics for that song yet! Make sure the artist and the song are spelt correctly!")
+                    }
+                    
+                }
+                
+            }
+            
+            
+        }
+        task.resume()
+        
+        
+    }
     
     
 }
