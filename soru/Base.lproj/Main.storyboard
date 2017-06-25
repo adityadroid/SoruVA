@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,19 +22,121 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Soru" id="oDK-Js-1Kx"/>
+                    <navigationItem key="navigationItem" title="Soru" id="oDK-Js-1Kx" colorLabel="IBBuiltInLabel-Green">
+                        <barButtonItem key="rightBarButtonItem" image="controls.png" id="zuC-dG-MgK">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <segue destination="bg6-F0-zIm" kind="show" identifier="settingsSegue" id="lJn-eh-SBW"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1108" y="263.11844077961024"/>
+        </scene>
+        <!--Settings Controller-->
+        <scene sceneID="5qZ-m1-ZpM">
+            <objects>
+                <viewController id="bg6-F0-zIm" customClass="SettingsController" customModule="soru" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="b1a-1x-c8D"/>
+                        <viewControllerLayoutGuide type="bottom" id="lUg-dI-kBG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="P9v-JV-gPW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App Theme" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gEL-q3-i1z">
+                                <rect key="frame" x="16" y="74" width="343" height="27"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BLI-Em-fTj">
+                                <rect key="frame" x="16" y="105.5" width="343" height="2"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="rp5-Lc-pf8"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="30" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="otS-CP-xb7">
+                                <rect key="frame" x="16" y="107.5" width="343" height="515.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="8TK-IO-eO6" customClass="SettingsCell" customModule="soru" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="343" height="30"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8TK-IO-eO6" id="DgF-32-tWA">
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="29"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jCj-XI-Hyc">
+                                                    <rect key="frame" x="10" y="-0.5" width="94" height="30"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                    <state key="normal" title="Primary Color">
+                                                        <color key="titleColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                                    </state>
+                                                </button>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ztd-fM-hGW">
+                                                    <rect key="frame" x="308" y="0.0" width="25" height="25"/>
+                                                    <color key="backgroundColor" red="0.90588235289999997" green="0.29803921570000003" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="25" id="6hB-Xq-7gL"/>
+                                                        <constraint firstAttribute="height" constant="25" id="MSB-qY-69A"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="jCj-XI-Hyc" secondAttribute="bottom" id="3ij-7x-dkE"/>
+                                                <constraint firstAttribute="trailing" secondItem="Ztd-fM-hGW" secondAttribute="trailing" constant="10" id="YFD-de-lfY"/>
+                                                <constraint firstAttribute="bottom" secondItem="Ztd-fM-hGW" secondAttribute="bottom" id="jPn-UK-zJg"/>
+                                                <constraint firstItem="Ztd-fM-hGW" firstAttribute="top" secondItem="DgF-32-tWA" secondAttribute="top" id="lfD-Xu-foJ"/>
+                                                <constraint firstItem="jCj-XI-Hyc" firstAttribute="leading" secondItem="DgF-32-tWA" secondAttribute="leading" constant="10" id="m1L-uR-EX2"/>
+                                                <constraint firstItem="jCj-XI-Hyc" firstAttribute="top" secondItem="DgF-32-tWA" secondAttribute="top" id="xLe-Cn-Wsa"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="settingTile" destination="Ztd-fM-hGW" id="Q9o-qB-R6B"/>
+                                            <outlet property="settingTitle" destination="jCj-XI-Hyc" id="fsE-fp-KIL"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="bg6-F0-zIm" id="aQI-v8-2Vk"/>
+                                    <outlet property="delegate" destination="bg6-F0-zIm" id="wLm-zn-U5K"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="gEL-q3-i1z" firstAttribute="top" secondItem="b1a-1x-c8D" secondAttribute="bottom" constant="10" id="0Xq-z9-DBM"/>
+                            <constraint firstItem="gEL-q3-i1z" firstAttribute="leading" secondItem="P9v-JV-gPW" secondAttribute="leadingMargin" id="70A-XV-kA4"/>
+                            <constraint firstItem="BLI-Em-fTj" firstAttribute="leading" secondItem="P9v-JV-gPW" secondAttribute="leadingMargin" id="74U-3R-C1E"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="otS-CP-xb7" secondAttribute="trailing" id="FB5-MX-SKe"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="gEL-q3-i1z" secondAttribute="trailing" id="OWP-aW-5Tz"/>
+                            <constraint firstItem="otS-CP-xb7" firstAttribute="leading" secondItem="P9v-JV-gPW" secondAttribute="leadingMargin" id="UXi-w5-mbQ"/>
+                            <constraint firstItem="lUg-dI-kBG" firstAttribute="top" secondItem="otS-CP-xb7" secondAttribute="bottom" id="b1Q-d4-zn1"/>
+                            <constraint firstItem="BLI-Em-fTj" firstAttribute="top" secondItem="gEL-q3-i1z" secondAttribute="bottom" constant="5" id="dAF-dT-5SJ"/>
+                            <constraint firstItem="otS-CP-xb7" firstAttribute="top" secondItem="BLI-Em-fTj" secondAttribute="bottom" id="dNp-iD-lan"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="BLI-Em-fTj" secondAttribute="trailing" id="tnO-hU-bxI"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ip9-qf-39Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1812" y="277.51124437781112"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="IQI-IE-ugP">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="RnW-MV-e2s" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="vuI-Ea-Tma">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="vuI-Ea-Tma">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.33333333329999998" green="0.58823529409999997" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -51,4 +154,8 @@
             <point key="canvasLocation" x="172" y="265.81709145427288"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="controls.png" width="24" height="24"/>
+    </resources>
+    <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

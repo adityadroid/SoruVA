@@ -21,8 +21,8 @@ import BMSCore
 class ViewController: JSQMessagesViewController{
     
     // Configure chat settings for JSQMessages
-    let incomingChatBubble = JSQMessagesBubbleImageFactory().incomingMessagesBubbleImage(with: UIColor.jsq_messageBubbleGreen())
-    let outgoingChatBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImage(with: UIColor.jsq_messageBubbleLightGray())
+    var incomingChatBubble = JSQMessagesBubbleImageFactory().incomingMessagesBubbleImage(with: UIColor(red: 230.0/255.0, green: 126.0/255.0, blue: 34.0/255.0, alpha: 1.0))
+    var outgoingChatBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImage(with: UIColor.jsq_messageBubbleLightGray())
     fileprivate let kCollectionViewCellHeight: CGFloat = 12.5
     
     // Configure Watson Conversation items
@@ -36,12 +36,19 @@ class ViewController: JSQMessagesViewController{
         
         super.viewDidLoad()
         self.setupTextBubbles()
+        self.applyTheme()
         // Remove attachment icon from toolbar
         self.inputToolbar.contentView.leftBarButtonItem = nil
-    
+        self.inputToolbar.contentView.rightBarButtonItem.setImage( UIImage(named: "send-button(1).png"), for : .normal)
+        self.inputToolbar.contentView.rightBarButtonItem.setTitle("", for: .normal)
+      
         
         NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActive), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
+      //      navigationController?.navigationBar.barTintColor = UIColor(red: 231.0/255.0, green: 76.0/255.0, blue: 60.0/255.0, alpha: 1.0)
+      //  navigationController?.navigationBar.tintColor = UIColor.white
+     //   rgba(231, 76, 60,1.0)
     }
+    
     
     func reloadMessagesView() {
         DispatchQueue.main.async {
@@ -51,7 +58,9 @@ class ViewController: JSQMessagesViewController{
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        self.applyTheme()
         SwiftSpinner.show("Connecting to Soru", animated: true)
+        
         // Create a configuration path for the BMSCredentials.plist file to read in Watson credentials
         let configurationPath = Bundle.main.path(forResource: "BMSCredentials", ofType: "plist")
         let configuration = NSDictionary(contentsOfFile: configurationPath!)
@@ -755,6 +764,133 @@ class ViewController: JSQMessagesViewController{
         }
         task.resume()
         
+        
+    }
+    
+    func applyTheme(){
+        
+        if(UserDefaults.standard.string(forKey: "primary") != nil &&
+           UserDefaults.standard.string(forKey: "accent") != nil &&
+            UserDefaults.standard.string(forKey: "user") != nil &&
+            UserDefaults.standard.string(forKey: "watson") != nil
+            ){
+            print("applying theme")
+            let primary = UserDefaults.standard.string(forKey: "primary")
+            let accent = UserDefaults.standard.string(forKey: "accent")
+            let user = UserDefaults.standard.string(forKey: "user")
+            let watson = UserDefaults.standard.string(forKey: "watson")
+            print("Primary theme",primary)
+            print("Accent",accent)
+            print("User",user)
+            print("Watson",watson)
+            
+            self.inputToolbar.contentView.rightBarButtonItem.tintColor = self.getColor(color: accent!,itemType: "accent")
+            navigationController?.navigationBar.barTintColor = self.getColor(color: primary!,itemType: "primary")
+            if(primary != "white"){
+            navigationController?.navigationBar.tintColor = UIColor.white
+            }else{
+                navigationController?.navigationBar.tintColor = UIColor.black
+            }
+            incomingChatBubble = JSQMessagesBubbleImageFactory().incomingMessagesBubbleImage(with: self.getColor(color: watson!,itemType: "watson"))
+            outgoingChatBubble = JSQMessagesBubbleImageFactory().incomingMessagesBubbleImage(with: self.getColor(color: user!,itemType: "user"))
+            
+        }else{
+            print("No theme found")
+    
+            UserDefaults.standard.set("red", forKey: "primary")
+            UserDefaults.standard.set("red", forKey: "accent")
+            UserDefaults.standard.set("red", forKey: "user")
+            UserDefaults.standard.set("red", forKey: "watson")
+
+            
+        }
+    }
+    
+    func getColor(color : String, itemType: String)->UIColor{
+        
+        
+        switch(itemType){
+        case "primary" :
+                switch(color){
+                    
+                case "red" :
+                    return UIColor(red: 231.0/255.0, green: 76.0/255.0, blue: 60.0/255.0, alpha: 1.0)
+                case "blue" :
+                    return UIColor(red: 41.0/255.0, green: 128.0/255.0, blue: 185.0/255.0, alpha: 1.0)
+                case "green" :
+                    return UIColor(red: 39.0/255.0, green: 174.0/255.0, blue: 96.0/255.0, alpha: 1.0)
+                case "white" :
+                    return UIColor(red: 236.0/255.0, green: 240.0/255.0, blue: 241.0/255.0, alpha: 1.0)
+                case "black" :
+                    return UIColor(red: 52.0/255.0, green: 73.0/255.0, blue: 94.0/255.0, alpha: 1.0)
+                default:
+                    break
+                    
+            }
+            break
+            case "accent" :
+            
+                switch(color){
+                    
+                case "red" :
+                    return UIColor(red: 231.0/255.0, green: 76.0/255.0, blue: 60.0/255.0, alpha: 1.0)
+                case "blue" :
+                    return UIColor(red: 52.0/255.0, green: 152.0/255.0, blue: 219.0/255.0, alpha: 1.0)
+                case "green" :
+                    return UIColor(red: 46.0/255.0, green: 204.0/255.0, blue: 113.0/255.0, alpha: 1.0)
+                case "white" :
+                    return UIColor(red: 185.0/255.0, green: 195.0/255.0, blue: 199.0/255.0, alpha: 1.0)
+                case "black" :
+                    return UIColor(red: 52.0/255.0, green: 73.0/255.0, blue: 94.0/255.0, alpha: 1.0)
+                default:
+                    break
+                    
+            }
+            break
+            case "user" :
+                switch(color){
+                    
+                case "red" :
+                    return UIColor(red: 231.0/255.0, green: 76.0/255.0, blue: 60.0/255.0, alpha: 1.0)
+                case "blue" :
+                    return UIColor(red: 52.0/255.0, green: 152.0/255.0, blue: 219.0/255.0, alpha: 1.0)
+                case "green" :
+                    return UIColor(red: 46.0/255.0, green: 204.0/255.0, blue: 113.0/255.0, alpha: 1.0)
+                case "white" :
+                    return UIColor(red: 185.0/255.0, green: 195.0/255.0, blue: 199.0/255.0, alpha: 1.0)
+                case "black" :
+                    return UIColor(red: 52.0/255.0, green: 73.0/255.0, blue: 94.0/255.0, alpha: 1.0)
+                default:
+                    break
+                    
+            }
+            break
+            case "watson" :
+                switch(color){
+                    
+                case "red" :
+                    return UIColor(red: 231.0/255.0, green: 76.0/255.0, blue: 60.0/255.0, alpha: 1.0)
+                case "blue" :
+                    return UIColor(red: 52.0/255.0, green: 152.0/255.0, blue: 219.0/255.0, alpha: 1.0)
+                case "green" :
+                    return UIColor(red: 46.0/255.0, green: 204.0/255.0, blue: 113.0/255.0, alpha: 1.0)
+                case "white" :
+                    return UIColor(red: 185.0/255.0, green: 195.0/255.0, blue: 199.0/255.0, alpha: 1.0)
+                case "black" :
+                    return UIColor(red: 52.0/255.0, green: 73.0/255.0, blue: 94.0/255.0, alpha: 1.0)
+                default:
+                    break
+                    
+            }
+            break
+            
+            default :
+            break
+            
+            
+        }
+       
+       return UIColor.white
         
     }
     
