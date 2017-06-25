@@ -1,7 +1,4 @@
-//
-//   ViewController.swift
-//   soru
-// 
+
 
 import UIKit
 import SwiftSpinner
@@ -9,13 +6,22 @@ import ConversationV1
 import JSQMessagesViewController
 import BMSCore
 
+//FIND WEATHER
+//MAKE A PHONE CALL
+//GET IMAGE FROM UNSPLASH
+//OPEN MAPS
+//GET INTRO FROM WIKIPEDIA
+//GET RESPONSE FROM IBM WATSON
+//GET ANSWERS FROM WOLFRAM ALPHA
+//GET LYRICS OF A SONG
 
 
 
-class ViewController: JSQMessagesViewController {
+
+class ViewController: JSQMessagesViewController{
     
     // Configure chat settings for JSQMessages
-    let incomingChatBubble = JSQMessagesBubbleImageFactory().incomingMessagesBubbleImage(with: UIColor.jsq_messageBubbleBlue())
+    let incomingChatBubble = JSQMessagesBubbleImageFactory().incomingMessagesBubbleImage(with: UIColor.jsq_messageBubbleGreen())
     let outgoingChatBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImage(with: UIColor.jsq_messageBubbleLightGray())
     fileprivate let kCollectionViewCellHeight: CGFloat = 12.5
     
@@ -32,6 +38,7 @@ class ViewController: JSQMessagesViewController {
         self.setupTextBubbles()
         // Remove attachment icon from toolbar
         self.inputToolbar.contentView.leftBarButtonItem = nil
+    
         
         NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActive), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
     }
@@ -75,6 +82,18 @@ class ViewController: JSQMessagesViewController {
         }
     }
     
+    
+    override func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            
+            self.keyboardController.textView?.resignFirstResponder()
+            self.didPressSend(nil, withMessageText:self.keyboardController.textView?.text , senderId:self.senderId , senderDisplayName: self.senderDisplayName, date: NSDate() as Date!)
+            return false
+        }
+        
+        return true
+    }
+   
     func didBecomeActive(_ notification: Notification) {
         
         
@@ -345,9 +364,22 @@ class ViewController: JSQMessagesViewController {
     
     
     
+    //FIND WEATHER
+    
+//    func findWeatherr(_city : String){
+//        
+//        
+//        
+//        let url = URL(string: "http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=0178dc4c3506656331c9d6e475ee9686")
+//    
+//    
+//    }
+    
     func findWeather(_ city : String){
         
         var message : String!
+        
+        
         
             if  let url = URL(string: "http://www.weather-forecast.com/locations/"+city+"/forecasts/latest") {
             
@@ -397,6 +429,11 @@ class ViewController: JSQMessagesViewController {
     }
     
     
+    
+    
+    
+    //MAKE A PHONE CALL
+    
     func makePhoneCall(_ number : String){
         let url  = URL(string:  "tel://"+number)
         if(UIApplication.shared.canOpenURL(url!)){
@@ -406,6 +443,10 @@ class ViewController: JSQMessagesViewController {
         }
     }
 
+    
+    
+    
+    //DISPLAY A MESSAGE FROM SORU
     func displayMessage(_ msg : String){
         
         
@@ -417,6 +458,9 @@ class ViewController: JSQMessagesViewController {
         }
         
     }
+    
+    
+    //GET IMAGE FROM UNSPLASH
     
     
     func getImage(_ query : String){
@@ -494,6 +538,10 @@ class ViewController: JSQMessagesViewController {
         task.resume()
       
     }
+    
+    
+    //OPEN MAPS
+    
     func openNavigation(_ loc : String){
         let loc2 = loc.replacingOccurrences(of: " ", with: "+")
         let url  = URL(string:  "http://maps.apple.com/?q="+loc2)
@@ -506,12 +554,20 @@ class ViewController: JSQMessagesViewController {
     
     
     
+    
+    //GET DATA FROM A URL
+    
     func getDataFromUrl(url: URL, completion: @escaping (_ data: Data?, _  response: URLResponse?, _ error: Error?) -> Void) {
         URLSession.shared.dataTask(with: url) {
             (data, response, error) in
             completion(data, response, error)
             }.resume()
     }
+    
+    
+    
+    
+    //DOWNLOAD IMAGE FROM A GIVEN URL
     
     
     func downloadImage(url: URL) {
@@ -536,6 +592,10 @@ class ViewController: JSQMessagesViewController {
             }
         }
     }
+    
+    
+    //GET INTRO FROM WIKIPEDIA
+    
     
     func getWikiIntro(_ query : String, _ completeQuery : String)
     {
@@ -594,6 +654,8 @@ class ViewController: JSQMessagesViewController {
     
     
     
+    //GET RESPONSE FROM WOLFRAM ALPHA
+    
     func getWolframAlphaResponse(_ query : String){
         print("Getting data from wolfram alpha...")
         let escapedString = query.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
@@ -629,6 +691,9 @@ class ViewController: JSQMessagesViewController {
         task.resume()
     }
     
+    
+    
+//    GET LYRICS OF A SONG
     
     func getLyrics( _ song : String, _ artist: String){
         
