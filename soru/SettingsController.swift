@@ -26,48 +26,68 @@ class SettingsController : UIViewController, UITableViewDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! SettingsCell
         cell.settingTitle.setTitle(items[indexPath.row], for: .normal)
-        currentCell = cell
-        cell.settingTitle.tag = indexPath.row
-        cell.settingTitle.addTarget(self, action: #selector(SettingsController.clickedSettingsItem(_:)), for: .touchUpInside)
-        
         
         return cell
     }
     
     
-    func clickedSettingsItem(_ sender : UIButton){
+  
+    
+  
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        
+          let cell = tableView.cellForRow(at: indexPath) as! SettingsCell
+        var itemType = ""
+        switch(indexPath.row){
+            
+        case 0:
+          itemType = "primary"
+        case 1:
+            itemType = "accent"
+        case 2:
+            itemType = "user"
+        case 3:
+            itemType = "watson"
+        default:
+            itemType = "primary"
+            
+        }
+
         let themeAlert = UIAlertController(title: "Select theme", message: "Choose a theme to customize", preferredStyle: UIAlertControllerStyle.actionSheet)
-       
+        
         
         themeAlert.addAction(UIAlertAction(title: "Red", style: .default, handler: { (action: UIAlertAction!) in
-            self.changeTheme("red",sender.tag)
+            cell.settingTile.backgroundColor = getColor(color: "red",itemType: itemType)
+            self.changeTheme("red",indexPath.row)
             
         }))
         themeAlert.addAction(UIAlertAction(title: "Green", style: .default, handler: { (action: UIAlertAction!) in
-            self.changeTheme("green",sender.tag)
+            cell.settingTile.backgroundColor = getColor(color: "green",itemType: itemType)
 
+            self.changeTheme("green",indexPath.row)
+            
         }))
         themeAlert.addAction(UIAlertAction(title: "Blue", style: .default, handler: { (action: UIAlertAction!) in
-            self.changeTheme("blue",sender.tag)
+            cell.settingTile.backgroundColor = getColor(color: "blue",itemType: itemType)
+            self.changeTheme("blue",indexPath.row)
         }))
         themeAlert.addAction(UIAlertAction(title: "Black", style: .default, handler: { (action: UIAlertAction!) in
-            self.changeTheme("black",sender.tag)
+            cell.settingTile.backgroundColor = getColor(color: "black",itemType: itemType)
+            self.changeTheme("black",indexPath.row)
             
         }))
         themeAlert.addAction(UIAlertAction(title: "White", style: .default, handler: { (action: UIAlertAction!) in
-            self.changeTheme("white",sender.tag)
+            cell.settingTile.backgroundColor = getColor(color: "white",itemType: itemType)
+            self.changeTheme("white",indexPath.row)
         }))
         
         present(themeAlert, animated: true, completion: nil)
         
         
         
-        
-       
+
     }
-    
     func changeTheme(_ theme : String ,_ currentIndex : Int){
         print("Index",currentIndex)
         switch(currentIndex){

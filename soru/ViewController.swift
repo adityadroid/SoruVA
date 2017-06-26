@@ -784,15 +784,15 @@ class ViewController: JSQMessagesViewController{
             print("User",user)
             print("Watson",watson)
             
-            self.inputToolbar.contentView.rightBarButtonItem.tintColor = self.getColor(color: accent!,itemType: "accent")
-            navigationController?.navigationBar.barTintColor = self.getColor(color: primary!,itemType: "primary")
+            self.inputToolbar.contentView.rightBarButtonItem.tintColor = getColor(color: accent!,itemType: "accent")
+            navigationController?.navigationBar.barTintColor = getColor(color: primary!,itemType: "primary")
             if(primary != "white"){
             navigationController?.navigationBar.tintColor = UIColor.white
             }else{
                 navigationController?.navigationBar.tintColor = UIColor.black
             }
-            incomingChatBubble = JSQMessagesBubbleImageFactory().incomingMessagesBubbleImage(with: self.getColor(color: watson!,itemType: "watson"))
-            outgoingChatBubble = JSQMessagesBubbleImageFactory().incomingMessagesBubbleImage(with: self.getColor(color: user!,itemType: "user"))
+            incomingChatBubble = JSQMessagesBubbleImageFactory().incomingMessagesBubbleImage(with: getColor(color: watson!,itemType: "watson"))
+            outgoingChatBubble = JSQMessagesBubbleImageFactory().incomingMessagesBubbleImage(with: getColor(color: user!,itemType: "user"))
             
         }else{
             print("No theme found")
@@ -806,93 +806,96 @@ class ViewController: JSQMessagesViewController{
         }
     }
     
-    func getColor(color : String, itemType: String)->UIColor{
-        
-        
-        switch(itemType){
-        case "primary" :
-                switch(color){
-                    
-                case "red" :
-                    return UIColor(red: 231.0/255.0, green: 76.0/255.0, blue: 60.0/255.0, alpha: 1.0)
-                case "blue" :
-                    return UIColor(red: 41.0/255.0, green: 128.0/255.0, blue: 185.0/255.0, alpha: 1.0)
-                case "green" :
-                    return UIColor(red: 39.0/255.0, green: 174.0/255.0, blue: 96.0/255.0, alpha: 1.0)
-                case "white" :
-                    return UIColor(red: 236.0/255.0, green: 240.0/255.0, blue: 241.0/255.0, alpha: 1.0)
-                case "black" :
-                    return UIColor(red: 52.0/255.0, green: 73.0/255.0, blue: 94.0/255.0, alpha: 1.0)
-                default:
-                    break
-                    
-            }
-            break
-            case "accent" :
+    
+   
+    
+}
+
+
+func getColor(color : String, itemType: String)->UIColor{
+    
+    
+    switch(itemType){
+    case "primary" :
+        switch(color){
             
-                switch(color){
-                    
-                case "red" :
-                    return UIColor(red: 231.0/255.0, green: 76.0/255.0, blue: 60.0/255.0, alpha: 1.0)
-                case "blue" :
-                    return UIColor(red: 52.0/255.0, green: 152.0/255.0, blue: 219.0/255.0, alpha: 1.0)
-                case "green" :
-                    return UIColor(red: 46.0/255.0, green: 204.0/255.0, blue: 113.0/255.0, alpha: 1.0)
-                case "white" :
-                    return UIColor(red: 185.0/255.0, green: 195.0/255.0, blue: 199.0/255.0, alpha: 1.0)
-                case "black" :
-                    return UIColor(red: 52.0/255.0, green: 73.0/255.0, blue: 94.0/255.0, alpha: 1.0)
-                default:
-                    break
-                    
-            }
+        case "red" :
+            return UIColor(red: 231.0/255.0, green: 76.0/255.0, blue: 60.0/255.0, alpha: 1.0)
+        case "blue" :
+            return UIColor(red: 41.0/255.0, green: 128.0/255.0, blue: 185.0/255.0, alpha: 1.0)
+        case "green" :
+            return UIColor(red: 39.0/255.0, green: 174.0/255.0, blue: 96.0/255.0, alpha: 1.0)
+        case "white" :
+            return UIColor(red: 236.0/255.0, green: 240.0/255.0, blue: 241.0/255.0, alpha: 1.0)
+        case "black" :
+            return UIColor(red: 52.0/255.0, green: 73.0/255.0, blue: 94.0/255.0, alpha: 1.0)
+        default:
             break
-            case "user" :
-                switch(color){
-                    
-                case "red" :
-                    return UIColor(red: 231.0/255.0, green: 76.0/255.0, blue: 60.0/255.0, alpha: 1.0)
-                case "blue" :
-                    return UIColor(red: 52.0/255.0, green: 152.0/255.0, blue: 219.0/255.0, alpha: 1.0)
-                case "green" :
-                    return UIColor(red: 46.0/255.0, green: 204.0/255.0, blue: 113.0/255.0, alpha: 1.0)
-                case "white" :
-                    return UIColor(red: 185.0/255.0, green: 195.0/255.0, blue: 199.0/255.0, alpha: 1.0)
-                case "black" :
-                    return UIColor(red: 52.0/255.0, green: 73.0/255.0, blue: 94.0/255.0, alpha: 1.0)
-                default:
-                    break
-                    
-            }
-            break
-            case "watson" :
-                switch(color){
-                    
-                case "red" :
-                    return UIColor(red: 231.0/255.0, green: 76.0/255.0, blue: 60.0/255.0, alpha: 1.0)
-                case "blue" :
-                    return UIColor(red: 52.0/255.0, green: 152.0/255.0, blue: 219.0/255.0, alpha: 1.0)
-                case "green" :
-                    return UIColor(red: 46.0/255.0, green: 204.0/255.0, blue: 113.0/255.0, alpha: 1.0)
-                case "white" :
-                    return UIColor(red: 185.0/255.0, green: 195.0/255.0, blue: 199.0/255.0, alpha: 1.0)
-                case "black" :
-                    return UIColor(red: 52.0/255.0, green: 73.0/255.0, blue: 94.0/255.0, alpha: 1.0)
-                default:
-                    break
-                    
-            }
-            break
-            
-            default :
-            break
-            
             
         }
-       
-       return UIColor.white
+        break
+    case "accent" :
+        
+        switch(color){
+            
+        case "red" :
+            return UIColor(red: 231.0/255.0, green: 76.0/255.0, blue: 60.0/255.0, alpha: 1.0)
+        case "blue" :
+            return UIColor(red: 52.0/255.0, green: 152.0/255.0, blue: 219.0/255.0, alpha: 1.0)
+        case "green" :
+            return UIColor(red: 46.0/255.0, green: 204.0/255.0, blue: 113.0/255.0, alpha: 1.0)
+        case "white" :
+            return UIColor(red: 185.0/255.0, green: 195.0/255.0, blue: 199.0/255.0, alpha: 1.0)
+        case "black" :
+            return UIColor(red: 52.0/255.0, green: 73.0/255.0, blue: 94.0/255.0, alpha: 1.0)
+        default:
+            break
+            
+        }
+        break
+    case "user" :
+        switch(color){
+            
+        case "red" :
+            return UIColor(red: 231.0/255.0, green: 76.0/255.0, blue: 60.0/255.0, alpha: 1.0)
+        case "blue" :
+            return UIColor(red: 52.0/255.0, green: 152.0/255.0, blue: 219.0/255.0, alpha: 1.0)
+        case "green" :
+            return UIColor(red: 46.0/255.0, green: 204.0/255.0, blue: 113.0/255.0, alpha: 1.0)
+        case "white" :
+            return UIColor(red: 185.0/255.0, green: 195.0/255.0, blue: 199.0/255.0, alpha: 1.0)
+        case "black" :
+            return UIColor(red: 52.0/255.0, green: 73.0/255.0, blue: 94.0/255.0, alpha: 1.0)
+        default:
+            break
+            
+        }
+        break
+    case "watson" :
+        switch(color){
+            
+        case "red" :
+            return UIColor(red: 231.0/255.0, green: 76.0/255.0, blue: 60.0/255.0, alpha: 1.0)
+        case "blue" :
+            return UIColor(red: 52.0/255.0, green: 152.0/255.0, blue: 219.0/255.0, alpha: 1.0)
+        case "green" :
+            return UIColor(red: 46.0/255.0, green: 204.0/255.0, blue: 113.0/255.0, alpha: 1.0)
+        case "white" :
+            return UIColor(red: 185.0/255.0, green: 195.0/255.0, blue: 199.0/255.0, alpha: 1.0)
+        case "black" :
+            return UIColor(red: 52.0/255.0, green: 73.0/255.0, blue: 94.0/255.0, alpha: 1.0)
+        default:
+            break
+            
+        }
+        break
+        
+    default :
+        break
+        
         
     }
     
+    return UIColor.white
     
 }

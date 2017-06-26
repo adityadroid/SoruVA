@@ -74,26 +74,27 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jCj-XI-Hyc">
-                                                    <rect key="frame" x="10" y="-0.5" width="94" height="30"/>
+                                                    <rect key="frame" x="10" y="-0.5" width="94" height="25.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                     <state key="normal" title="Primary Color">
                                                         <color key="titleColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                                     </state>
                                                 </button>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ztd-fM-hGW">
-                                                    <rect key="frame" x="308" y="0.0" width="25" height="25"/>
+                                                    <rect key="frame" x="308" y="2" width="25" height="21"/>
                                                     <color key="backgroundColor" red="0.90588235289999997" green="0.29803921570000003" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="25" id="6hB-Xq-7gL"/>
-                                                        <constraint firstAttribute="height" constant="25" id="MSB-qY-69A"/>
+                                                        <constraint firstAttribute="height" constant="21" id="MSB-qY-69A"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="jCj-XI-Hyc" secondAttribute="bottom" id="3ij-7x-dkE"/>
+                                                <constraint firstItem="Ztd-fM-hGW" firstAttribute="centerY" secondItem="DgF-32-tWA" secondAttribute="centerY" id="GBS-xK-Ify"/>
                                                 <constraint firstAttribute="trailing" secondItem="Ztd-fM-hGW" secondAttribute="trailing" constant="10" id="YFD-de-lfY"/>
-                                                <constraint firstAttribute="bottom" secondItem="Ztd-fM-hGW" secondAttribute="bottom" id="jPn-UK-zJg"/>
-                                                <constraint firstItem="Ztd-fM-hGW" firstAttribute="top" secondItem="DgF-32-tWA" secondAttribute="top" id="lfD-Xu-foJ"/>
+                                                <constraint firstAttribute="bottom" secondItem="Ztd-fM-hGW" secondAttribute="bottom" constant="2" id="jPn-UK-zJg"/>
+                                                <constraint firstItem="Ztd-fM-hGW" firstAttribute="top" secondItem="DgF-32-tWA" secondAttribute="top" constant="2" id="lfD-Xu-foJ"/>
                                                 <constraint firstItem="jCj-XI-Hyc" firstAttribute="leading" secondItem="DgF-32-tWA" secondAttribute="leading" constant="10" id="m1L-uR-EX2"/>
                                                 <constraint firstItem="jCj-XI-Hyc" firstAttribute="top" secondItem="DgF-32-tWA" secondAttribute="top" id="xLe-Cn-Wsa"/>
                                             </constraints>
@@ -136,7 +137,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="RnW-MV-e2s" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="vuI-Ea-Tma">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="vuI-Ea-Tma">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.33333333329999998" green="0.58823529409999997" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
