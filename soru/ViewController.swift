@@ -744,6 +744,7 @@ class ViewController: JSQMessagesViewController{
                             modifLyrics = modifLyrics.replacingOccurrences(of: "</i>", with: "")
                             modifLyrics = modifLyrics.replacingOccurrences(of: "<i>", with: "")
                             modifLyrics = modifLyrics.replacingOccurrences(of: "&amp;", with: "&")
+                            modifLyrics = modifLyrics.replacingOccurrences(of: "&quot;", with: "\"")
                             
                             self.displayMessage(modifLyrics)
                         }else{
