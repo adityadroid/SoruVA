@@ -18,6 +18,7 @@
 		40CF04D21F0BB36900381B41 /* image_search.png in Resources */ = {isa = PBXBuildFile; fileRef = 40CF04D11F0BB36900381B41 /* image_search.png */; };
 		40CF04D61F0BFB8C00381B41 /* information.png in Resources */ = {isa = PBXBuildFile; fileRef = 40CF04D51F0BFB8C00381B41 /* information.png */; };
 		40CF04D81F0BFCF400381B41 /* question.png in Resources */ = {isa = PBXBuildFile; fileRef = 40CF04D71F0BFCF400381B41 /* question.png */; };
+		40D002301F0C1FA600A4E7A8 /* ImageFileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D0022F1F0C1FA600A4E7A8 /* ImageFileController.swift */; };
 		40DFAA9A1EFFDFE600BFE00B /* send-button(1).png in Resources */ = {isa = PBXBuildFile; fileRef = 40DFAA991EFFDFE600BFE00B /* send-button(1).png */; };
 		40DFAA9C1EFFE84700BFE00B /* boy.png in Resources */ = {isa = PBXBuildFile; fileRef = 40DFAA9B1EFFE84700BFE00B /* boy.png */; };
 		40DFAA9E1EFFEB2C00BFE00B /* controls.png in Resources */ = {isa = PBXBuildFile; fileRef = 40DFAA9D1EFFEB2C00BFE00B /* controls.png */; };
@@ -82,6 +83,7 @@
 		40CF04D11F0BB36900381B41 /* image_search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image_search.png; sourceTree = "<group>"; };
 		40CF04D51F0BFB8C00381B41 /* information.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = information.png; sourceTree = "<group>"; };
 		40CF04D71F0BFCF400381B41 /* question.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = question.png; sourceTree = "<group>"; };
+		40D0022F1F0C1FA600A4E7A8 /* ImageFileController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageFileController.swift; sourceTree = "<group>"; };
 		40DFAA991EFFDFE600BFE00B /* send-button(1).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "send-button(1).png"; sourceTree = "<group>"; };
 		40DFAA9B1EFFE84700BFE00B /* boy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = boy.png; sourceTree = "<group>"; };
 		40DFAA9D1EFFEB2C00BFE00B /* controls.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = controls.png; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 				40DFAA9F1EFFEC9B00BFE00B /* SettingsController.swift */,
 				40DFAAA11EFFF5DD00BFE00B /* SettingsCell.swift */,
 				40CF04C31F0BA12B00381B41 /* HelpViewController.swift */,
+				40D0022F1F0C1FA600A4E7A8 /* ImageFileController.swift */,
 			);
 			path = soru;
 			sourceTree = "<group>";
@@ -530,6 +533,7 @@
 				40DFAAA21EFFF5DD00BFE00B /* SettingsCell.swift in Sources */,
 				555C91AC1D0F0731003E84E3 /* AppDelegate.swift in Sources */,
 				40CF04C41F0BA12B00381B41 /* HelpViewController.swift in Sources */,
+				40D002301F0C1FA600A4E7A8 /* ImageFileController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

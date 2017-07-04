@@ -17,6 +17,7 @@ import BMSCore
 
 
 
+var currentImage : UIImage!
 
 class ViewController: JSQMessagesViewController{
     
@@ -808,10 +809,48 @@ class ViewController: JSQMessagesViewController{
     }
     
     
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, didTapMessageBubbleAt indexPath: IndexPath!) {
+        if(!self.conversationMessages[indexPath.row].isMediaMessage){
+            let shareString = self.conversationMessages[indexPath.row].text
+
+            let activityViewController: UIActivityViewController = UIActivityViewController(activityItems: [shareString!], applicationActivities: nil);
+            
+            let currentViewController:UIViewController = UIApplication.shared.keyWindow!.rootViewController!
+            
+            currentViewController.present(activityViewController, animated: true, completion: nil);
+            
+
+        }else{
+            print("Media item clicked")
+            let mediaItem = self.conversationMessages[indexPath.row].media
+            if(mediaItem?.isKind(of: JSQPhotoMediaItem.self))!{
+                let item : JSQPhotoMediaItem = mediaItem as! JSQPhotoMediaItem
+                currentImage = item.image
+                self.performSegue(withIdentifier: "popupSegue", sender: self)
+              //  let popoverContent = self.storyboard?.instantiateViewController(withIdentifier: "ImageFileController")
+              //  let nav = UINavigationController(rootViewController: popoverContent!)
+//                popoverContent?.view.frame = CGRect(origin: CGPoint(x: 0,y :0), size: CGSize(width: 100, height: 100))
+//                self.view.addSubview((popoverContent?.view)!)
+//                self.addChildViewController(popoverContent!)
+//               // nav.modalPresentationStyle = UIModalPresentationStyle.popover
+//                nav.modalPresentationStyle = .overCurrentContext
+//                nav.modalPresentationStyle = .popover
+//                let popover = nav.popoverPresentationController
+//                popoverContent?.preferredContentSize =  CGSize(width:500,height:600)
+//                popover?.delegate = self as? UIPopoverPresentationControllerDelegate
+//                popover?.sourceView = self.view
+//                popover?.sourceRect =  CGRect(origin: CGPoint(x: 0,y :0), size: CGSize(width: 100, height: 100))
+//                
+//                self.present(nav, animated: true, completion: nil)
+
+            }
+        }
+        
+    }
+    
    
     
 }
-
 
 func getColor(color : String, itemType: String)->UIColor{
     
@@ -900,3 +939,4 @@ func getColor(color : String, itemType: String)->UIColor{
     return UIColor.white
     
 }
+

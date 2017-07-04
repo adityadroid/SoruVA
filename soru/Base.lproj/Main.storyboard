@@ -15,7 +15,7 @@
         <!--Soru-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="soru" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="BYZ-38-t0r" customClass="ViewController" customModule="soru" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -42,6 +42,9 @@
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <connections>
+                        <segue destination="X71-en-16T" kind="show" identifier="popupSegue" id="PXY-Wv-CBa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -408,7 +411,7 @@ Example : Find me a picture of a bear</string>
                                         <rect key="frame" x="0.0" y="28" width="374" height="30"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8TK-IO-eO6" id="DgF-32-tWA">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="29"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="30"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jCj-XI-Hyc">
@@ -419,7 +422,7 @@ Example : Find me a picture of a bear</string>
                                                     </state>
                                                 </button>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ztd-fM-hGW">
-                                                    <rect key="frame" x="253" y="2" width="25" height="21"/>
+                                                    <rect key="frame" x="339" y="2" width="25" height="21"/>
                                                     <color key="backgroundColor" red="0.90588235289999997" green="0.29803921570000003" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="25" id="6hB-Xq-7gL"/>
@@ -469,6 +472,37 @@ Example : Find me a picture of a bear</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ip9-qf-39Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1812" y="277.51124437781112"/>
+        </scene>
+        <!--Image File Controller-->
+        <scene sceneID="Syh-Gq-s1y">
+            <objects>
+                <viewController storyboardIdentifier="ImageFileController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="X71-en-16T" customClass="ImageFileController" customModule="soru" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="PKN-1b-A1P"/>
+                        <viewControllerLayoutGuide type="bottom" id="uw0-4D-QDT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="mFP-Wb-K4B">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Jmi-gN-FyI">
+                                <rect key="frame" x="30" y="268.66666666666669" width="354" height="199"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Jmi-gN-FyI" secondAttribute="height" multiplier="16:9" id="1mF-Ym-Vfl"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.053082191780821915" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Jmi-gN-FyI" firstAttribute="centerY" secondItem="mFP-Wb-K4B" secondAttribute="centerY" id="91e-Ct-CmT"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Jmi-gN-FyI" secondAttribute="trailing" constant="10" id="Ies-tc-ntS"/>
+                            <constraint firstItem="Jmi-gN-FyI" firstAttribute="leading" secondItem="mFP-Wb-K4B" secondAttribute="leadingMargin" constant="10" id="gcp-7m-oPR"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Sv2-t0-qep" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1812" y="-512"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="IQI-IE-ugP">
