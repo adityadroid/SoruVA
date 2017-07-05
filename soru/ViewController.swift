@@ -218,7 +218,7 @@ class ViewController: JSQMessagesViewController{
         let message = self.conversationMessages[(indexPath as NSIndexPath).item]
         // Set the UI color of each cell based on who the sender is
         if message.senderId == senderId {
-            cell.textView!.textColor = UIColor.black
+            cell.textView!.textColor = UIColor.white
         } else {
             if let tv = cell.textView{
                 tv.textColor = UIColor.white
