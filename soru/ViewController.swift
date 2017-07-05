@@ -21,6 +21,7 @@ var currentImage : UIImage!
 
 class ViewController: JSQMessagesViewController{
     
+   // @IBOutlet weak var webView: UIWebView!
     // Configure chat settings for JSQMessages
     var incomingChatBubble = JSQMessagesBubbleImageFactory().incomingMessagesBubbleImage(with: UIColor(red: 230.0/255.0, green: 126.0/255.0, blue: 34.0/255.0, alpha: 1.0))
     var outgoingChatBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImage(with: UIColor.jsq_messageBubbleLightGray())
@@ -32,6 +33,7 @@ class ViewController: JSQMessagesViewController{
     var context: Context?
     var workspaceID: String!
     var currentIntent : String = ""
+    var webView : UIWebView!
     
     override func viewDidLoad() {
         
@@ -48,6 +50,13 @@ class ViewController: JSQMessagesViewController{
       //      navigationController?.navigationBar.barTintColor = UIColor(red: 231.0/255.0, green: 76.0/255.0, blue: 60.0/255.0, alpha: 1.0)
       //  navigationController?.navigationBar.tintColor = UIColor.white
      //   rgba(231, 76, 60,1.0)
+        
+        webView = UIWebView(frame: CGRect(origin: CGPoint(x: 0,y :60), size: CGSize(width: (UIApplication.shared.keyWindow?.frame.size.width)!, height: (UIApplication.shared.keyWindow?.frame.size.height)!-60)))
+    //    let webView = UIWebView(frame: (UIApplication.shared.keyWindow?.frame)!)
+        UIApplication.shared.keyWindow?.addSubview(webView)
+   //     webView.layer.zPosition = CGFloat.greatestFiniteMagnitude
+        webView.loadRequest(URLRequest(url: URL(string: "http://www.gaana.com")!))
+        webView.isHidden = true
     }
     
     
@@ -114,6 +123,10 @@ class ViewController: JSQMessagesViewController{
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func musicToggle(_ sender: UIBarButtonItem) {
+        
+        webView.isHidden = !(webView.isHidden)
+    }
     
     // Function handling errors with Tone Analyzer
     func failConversationWithError(_ error: Error) {
@@ -226,7 +239,15 @@ class ViewController: JSQMessagesViewController{
         }
         
         // Get response from Watson based on user text
-        if(!text.contains("-")){
+        if(text.lowercased().contains("play")){
+            
+            
+            let items = text.lowercased().components(separatedBy: "play")
+            print(items)
+            self.playSong(items[1])
+            
+        }
+        else if(!text.contains("-")){
         let messageRequest = MessageRequest(text: text, context: self.context)
         conversation.message(withWorkspace: self.workspaceID, request: messageRequest, failure: failConversationWithError) { response in
             // Set current context
@@ -384,7 +405,6 @@ class ViewController: JSQMessagesViewController{
 //    
 //    
 //    }
-    
     func findWeather(_ city : String){
         
         var message : String!
@@ -769,6 +789,14 @@ class ViewController: JSQMessagesViewController{
         
     }
     
+    func playSong(_ query : String){
+        
+        let escapedQuery = query.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
+        webView.loadRequest(URLRequest(url: URL(string: "http://www.gaana.com/search/"+escapedQuery!)!))
+        webView.isHidden = false
+        
+    }
+    
     func applyTheme(){
         
         if(UserDefaults.standard.string(forKey: "primary") != nil &&
@@ -809,6 +837,11 @@ class ViewController: JSQMessagesViewController{
     }
     
     
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        webView.isHidden = true
+    }
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, didTapMessageBubbleAt indexPath: IndexPath!) {
         if(!self.conversationMessages[indexPath.row].isMediaMessage){
             let shareString = self.conversationMessages[indexPath.row].text
@@ -826,23 +859,16 @@ class ViewController: JSQMessagesViewController{
             if(mediaItem?.isKind(of: JSQPhotoMediaItem.self))!{
                 let item : JSQPhotoMediaItem = mediaItem as! JSQPhotoMediaItem
                 currentImage = item.image
-                self.performSegue(withIdentifier: "popupSegue", sender: self)
-              //  let popoverContent = self.storyboard?.instantiateViewController(withIdentifier: "ImageFileController")
-              //  let nav = UINavigationController(rootViewController: popoverContent!)
-//                popoverContent?.view.frame = CGRect(origin: CGPoint(x: 0,y :0), size: CGSize(width: 100, height: 100))
-//                self.view.addSubview((popoverContent?.view)!)
-//                self.addChildViewController(popoverContent!)
-//               // nav.modalPresentationStyle = UIModalPresentationStyle.popover
-//                nav.modalPresentationStyle = .overCurrentContext
-//                nav.modalPresentationStyle = .popover
-//                let popover = nav.popoverPresentationController
-//                popoverContent?.preferredContentSize =  CGSize(width:500,height:600)
-//                popover?.delegate = self as? UIPopoverPresentationControllerDelegate
-//                popover?.sourceView = self.view
-//                popover?.sourceRect =  CGRect(origin: CGPoint(x: 0,y :0), size: CGSize(width: 100, height: 100))
-//                
-//                self.present(nav, animated: true, completion: nil)
-
+               // self.performSegue(withIdentifier: "settingsSegue", sender: self)
+                let popvc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ImageFileController") as! ImageFileController
+                
+                self.addChildViewController(popvc)
+                
+                popvc.view.frame = self.view.frame
+                
+                self.view.addSubview(popvc.view)
+                
+                popvc.didMove(toParentViewController: self)
             }
         }
         
@@ -850,7 +876,25 @@ class ViewController: JSQMessagesViewController{
     
    
     
+    
+
 }
+
+
+
+
+
+
+
+
+
+
+//Class ends here
+
+
+
+
+
 
 func getColor(color : String, itemType: String)->UIColor{
     

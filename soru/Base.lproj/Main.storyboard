@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="RnW-MV-e2s">
-    <device id="retina5_5" orientation="portrait">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -21,12 +21,30 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l58-Bs-dUb">
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="l58-Bs-dUb" secondAttribute="trailing" constant="-16" id="BwF-H3-TR7"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="l58-Bs-dUb" secondAttribute="bottom" id="CQE-hN-4oX"/>
+                            <constraint firstItem="l58-Bs-dUb" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="f9E-CZ-7gd"/>
+                            <constraint firstItem="l58-Bs-dUb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="hNc-fV-ZeV"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Soru" id="oDK-Js-1Kx" colorLabel="IBBuiltInLabel-Green">
+                        <barButtonItem key="leftBarButtonItem" image="music-player(1).png" id="7Yz-bm-Wfg">
+                            <inset key="imageInsets" minX="4" minY="2" maxX="0.0" maxY="2"/>
+                            <connections>
+                                <action selector="musicToggle:" destination="BYZ-38-t0r" id="SXt-yc-HVb"/>
+                            </connections>
+                        </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem image="controls.png" id="zuC-dG-MgK">
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -43,12 +61,12 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
-                        <segue destination="X71-en-16T" kind="show" identifier="popupSegue" id="PXY-Wv-CBa"/>
+                        <segue destination="BHX-yB-0Yj" kind="show" identifier="popupSegue" id="Sl2-jS-qC3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1108" y="263.11844077961024"/>
+            <point key="canvasLocation" x="1106.25" y="261.97183098591552"/>
         </scene>
         <!--Help View Controller-->
         <scene sceneID="bdZ-0E-0q1">
@@ -67,26 +85,26 @@
                         <viewControllerLayoutGuide type="bottom" id="WJw-a4-zS6"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="gC5-re-YUC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="smartphone.png" translatesAutoresizingMaskIntoConstraints="NO" id="DGT-Ck-enB">
-                                <rect key="frame" x="120" y="100" width="174" height="174"/>
+                                <rect key="frame" x="116" y="100" width="88" height="88"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="DGT-Ck-enB" secondAttribute="height" multiplier="1:1" id="7dp-4e-Hk7"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search !" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lyE-D1-2Zy">
-                                <rect key="frame" x="20" y="304" width="374" height="143"/>
+                                <rect key="frame" x="16" y="218" width="288" height="127.5"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="32"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dI4-7W-OtM">
-                                <rect key="frame" x="20" y="447" width="374" height="289"/>
+                                <rect key="frame" x="16" y="345.5" width="288" height="222.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w9W-y5-al8">
-                                        <rect key="frame" x="20" y="20" width="334" height="249"/>
+                                        <rect key="frame" x="20" y="20" width="248" height="182.5"/>
                                         <string key="text">Ask different questions or ask for a wiki of a famous person. Use 'Who is' with a person name (first alphabet of person name capitalized) for better results.
 Example : Who is Narendra Modi? 
 What is the width of earth?</string>
@@ -132,26 +150,26 @@ What is the width of earth?</string>
                         <viewControllerLayoutGuide type="bottom" id="tc0-KH-YgG"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="PLq-GZ-opf">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="weather.png" translatesAutoresizingMaskIntoConstraints="NO" id="D9K-Fi-Kkz">
-                                <rect key="frame" x="120" y="100" width="174" height="174"/>
+                                <rect key="frame" x="116" y="100" width="88" height="88"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="D9K-Fi-Kkz" secondAttribute="height" multiplier="1:1" id="hmg-Hz-H6r"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Find Weather !" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ugf-LP-3vB">
-                                <rect key="frame" x="20" y="304" width="374" height="143"/>
+                                <rect key="frame" x="16" y="218" width="288" height="127.5"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="32"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SAn-8d-mEh">
-                                <rect key="frame" x="20" y="447" width="374" height="289"/>
+                                <rect key="frame" x="16" y="345.5" width="288" height="222.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vhJ-Gm-OVb">
-                                        <rect key="frame" x="20" y="20" width="334" height="249"/>
+                                        <rect key="frame" x="20" y="20" width="248" height="182.5"/>
                                         <string key="text">Find weather forecast for different locations.
 Example : What's the weather?
 You may also call a person by using questions like 'use the phone' or 'Call dad'</string>
@@ -197,26 +215,26 @@ You may also call a person by using questions like 'use the phone' or 'Call dad'
                         <viewControllerLayoutGuide type="bottom" id="gmC-78-gPc"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="YW2-kv-gUF">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="music.png" translatesAutoresizingMaskIntoConstraints="NO" id="IFg-JY-Wdu">
-                                <rect key="frame" x="120" y="100" width="174" height="174"/>
+                                <rect key="frame" x="116" y="100" width="88" height="88"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="IFg-JY-Wdu" secondAttribute="height" multiplier="1:1" id="pxe-lk-dcx"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Find Lyrics !" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6xP-vD-9Mo">
-                                <rect key="frame" x="20" y="304" width="374" height="143"/>
+                                <rect key="frame" x="16" y="218" width="288" height="127.5"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="32"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mp4-Hk-d79">
-                                <rect key="frame" x="20" y="447" width="374" height="289"/>
+                                <rect key="frame" x="16" y="345.5" width="288" height="222.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Find lyrics for songs you love. Send a query in the format : 'SongName-SingerName' Example : Lose Yourself - Eminem" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f51-vY-Zld">
-                                        <rect key="frame" x="20" y="20" width="334" height="249"/>
+                                        <rect key="frame" x="20" y="20" width="248" height="182.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -259,26 +277,26 @@ You may also call a person by using questions like 'use the phone' or 'Call dad'
                         <viewControllerLayoutGuide type="bottom" id="pPL-yN-bvM"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Bsl-j4-Bwp">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="maps.png" translatesAutoresizingMaskIntoConstraints="NO" id="VrP-O7-Bnd">
-                                <rect key="frame" x="120" y="100" width="174" height="174"/>
+                                <rect key="frame" x="116" y="100" width="88" height="88"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="VrP-O7-Bnd" secondAttribute="height" multiplier="1:1" id="rI4-cA-Dq9"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Find Places !" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="40u-LW-0f9">
-                                <rect key="frame" x="20" y="304" width="374" height="143"/>
+                                <rect key="frame" x="16" y="218" width="288" height="127.5"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="32"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LXq-FB-2mf">
-                                <rect key="frame" x="20" y="447" width="374" height="289"/>
+                                <rect key="frame" x="16" y="345.5" width="288" height="222.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oad-vX-mBk">
-                                        <rect key="frame" x="20" y="20" width="334" height="249"/>
+                                        <rect key="frame" x="20" y="20" width="248" height="182.5"/>
                                         <string key="text">Find places near you. Search for restaurants, schools, airports, railway stations. Use keywords like 'Find' and 'Where' for better results.
 Example : Find me a Petrol Pump</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -323,26 +341,26 @@ Example : Find me a Petrol Pump</string>
                         <viewControllerLayoutGuide type="bottom" id="pfo-Kq-jTM"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Qrv-Ne-WKz">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_search.png" translatesAutoresizingMaskIntoConstraints="NO" id="PZ6-IL-MJh">
-                                <rect key="frame" x="120" y="100" width="174" height="174"/>
+                                <rect key="frame" x="116" y="100" width="88" height="88"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="PZ6-IL-MJh" secondAttribute="height" multiplier="1:1" id="sWW-IN-0Cd"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Explore Images !" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UIY-Ex-Lfk">
-                                <rect key="frame" x="20" y="304" width="374" height="143"/>
+                                <rect key="frame" x="16" y="218" width="288" height="127.5"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="32"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2pK-9L-qxc">
-                                <rect key="frame" x="20" y="447" width="374" height="289"/>
+                                <rect key="frame" x="16" y="345.5" width="288" height="222.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jwi-HM-NkW">
-                                        <rect key="frame" x="20" y="20" width="334" height="249"/>
+                                        <rect key="frame" x="20" y="20" width="248" height="182.5"/>
                                         <string key="text">Find images of different places and objects. Use keywords 'Image of' , 'Picture of', ' Photo of' for better results.
 Example : Find me a picture of a bear</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -378,6 +396,65 @@ Example : Find me a picture of a bear</string>
             </objects>
             <point key="canvasLocation" x="3777" y="1743"/>
         </scene>
+        <!--Image File Controller-->
+        <scene sceneID="DBy-u9-1ca">
+            <objects>
+                <viewController storyboardIdentifier="ImageFileController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BHX-yB-0Yj" customClass="ImageFileController" customModule="soru" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="EdF-lz-XDD"/>
+                        <viewControllerLayoutGuide type="bottom" id="mRP-My-bdA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="uRY-nP-HPx">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DGS-G7-paO">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <connections>
+                                    <action selector="closeButton:" destination="BHX-yB-0Yj" eventType="touchUpInside" id="Q4B-qy-OB5"/>
+                                </connections>
+                            </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P0H-lu-C1W">
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Img-bh-bMx">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Img-bh-bMx" firstAttribute="centerY" secondItem="P0H-lu-C1W" secondAttribute="centerY" id="7sQ-nh-8IZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="Img-bh-bMx" secondAttribute="trailing" id="TWi-HJ-cB9"/>
+                                    <constraint firstAttribute="bottom" secondItem="Img-bh-bMx" secondAttribute="bottom" id="UtT-Uy-ST2"/>
+                                    <constraint firstItem="Img-bh-bMx" firstAttribute="leading" secondItem="P0H-lu-C1W" secondAttribute="leading" id="mEc-oS-RWJ"/>
+                                    <constraint firstItem="Img-bh-bMx" firstAttribute="centerX" secondItem="P0H-lu-C1W" secondAttribute="centerX" id="nPL-QC-DY1"/>
+                                    <constraint firstItem="Img-bh-bMx" firstAttribute="top" secondItem="P0H-lu-C1W" secondAttribute="top" id="rjl-9P-ad4"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="BHX-yB-0Yj" id="fMH-AX-Uhd"/>
+                                </connections>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.44665025684931509" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="DGS-G7-paO" secondAttribute="trailing" id="2ZV-g1-LvL"/>
+                            <constraint firstItem="DGS-G7-paO" firstAttribute="top" secondItem="uRY-nP-HPx" secondAttribute="top" id="8Dh-VG-NsG"/>
+                            <constraint firstItem="P0H-lu-C1W" firstAttribute="leading" secondItem="uRY-nP-HPx" secondAttribute="leadingMargin" constant="-16" id="HXr-1i-4e5"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="P0H-lu-C1W" secondAttribute="trailing" constant="-16" id="Jbh-in-ZS4"/>
+                            <constraint firstItem="P0H-lu-C1W" firstAttribute="top" secondItem="EdF-lz-XDD" secondAttribute="bottom" id="OJR-qU-W77"/>
+                            <constraint firstItem="mRP-My-bdA" firstAttribute="top" secondItem="P0H-lu-C1W" secondAttribute="bottom" id="ORQ-fM-D48"/>
+                            <constraint firstItem="DGS-G7-paO" firstAttribute="leading" secondItem="uRY-nP-HPx" secondAttribute="leading" id="Vfx-50-30f"/>
+                            <constraint firstItem="mRP-My-bdA" firstAttribute="top" secondItem="DGS-G7-paO" secondAttribute="bottom" id="XFp-Xc-uML"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="Img-bh-bMx" id="ivI-Ke-Cpj"/>
+                        <outlet property="scrollView" destination="P0H-lu-C1W" id="N8n-58-S1F"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fmz-5g-xzZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1711.875" y="-425.7042253521127"/>
+        </scene>
         <!--Settings Controller-->
         <scene sceneID="5qZ-m1-ZpM">
             <objects>
@@ -387,31 +464,31 @@ Example : Find me a picture of a bear</string>
                         <viewControllerLayoutGuide type="bottom" id="lUg-dI-kBG"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="P9v-JV-gPW">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App Theme" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gEL-q3-i1z">
-                                <rect key="frame" x="20" y="74" width="374" height="27"/>
+                                <rect key="frame" x="16" y="74" width="288" height="27"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BLI-Em-fTj">
-                                <rect key="frame" x="20" y="106" width="374" height="2"/>
+                                <rect key="frame" x="16" y="106" width="288" height="2"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="2" id="rp5-Lc-pf8"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="30" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="otS-CP-xb7">
-                                <rect key="frame" x="20" y="108" width="374" height="584"/>
+                                <rect key="frame" x="16" y="108" width="288" height="416"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="8TK-IO-eO6" customClass="SettingsCell" customModule="soru" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="374" height="30"/>
+                                        <rect key="frame" x="0.0" y="28" width="288" height="30"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8TK-IO-eO6" id="DgF-32-tWA">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="30"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="288" height="30"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jCj-XI-Hyc">
@@ -422,7 +499,7 @@ Example : Find me a picture of a bear</string>
                                                     </state>
                                                 </button>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ztd-fM-hGW">
-                                                    <rect key="frame" x="339" y="2" width="25" height="21"/>
+                                                    <rect key="frame" x="253" y="2" width="25" height="21"/>
                                                     <color key="backgroundColor" red="0.90588235289999997" green="0.29803921570000003" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="25" id="6hB-Xq-7gL"/>
@@ -473,37 +550,6 @@ Example : Find me a picture of a bear</string>
             </objects>
             <point key="canvasLocation" x="1812" y="277.51124437781112"/>
         </scene>
-        <!--Image File Controller-->
-        <scene sceneID="Syh-Gq-s1y">
-            <objects>
-                <viewController storyboardIdentifier="ImageFileController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="X71-en-16T" customClass="ImageFileController" customModule="soru" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="PKN-1b-A1P"/>
-                        <viewControllerLayoutGuide type="bottom" id="uw0-4D-QDT"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="mFP-Wb-K4B">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Jmi-gN-FyI">
-                                <rect key="frame" x="30" y="268.66666666666669" width="354" height="199"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="Jmi-gN-FyI" secondAttribute="height" multiplier="16:9" id="1mF-Ym-Vfl"/>
-                                </constraints>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.053082191780821915" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="Jmi-gN-FyI" firstAttribute="centerY" secondItem="mFP-Wb-K4B" secondAttribute="centerY" id="91e-Ct-CmT"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Jmi-gN-FyI" secondAttribute="trailing" constant="10" id="Ies-tc-ntS"/>
-                            <constraint firstItem="Jmi-gN-FyI" firstAttribute="leading" secondItem="mFP-Wb-K4B" secondAttribute="leadingMargin" constant="10" id="gcp-7m-oPR"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Sv2-t0-qep" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1812" y="-512"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="IQI-IE-ugP">
             <objects>
@@ -532,6 +578,7 @@ Example : Find me a picture of a bear</string>
         <image name="image_search.png" width="512" height="512"/>
         <image name="information.png" width="32" height="32"/>
         <image name="maps.png" width="512" height="512"/>
+        <image name="music-player(1).png" width="32" height="32"/>
         <image name="music.png" width="512" height="512"/>
         <image name="smartphone.png" width="512" height="512"/>
         <image name="weather.png" width="300" height="300"/>
