@@ -224,7 +224,7 @@ You may also call a person by using questions like 'use the phone' or 'Call dad'
                                     <constraint firstAttribute="width" secondItem="IFg-JY-Wdu" secondAttribute="height" multiplier="1:1" id="pxe-lk-dcx"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Find Lyrics !" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6xP-vD-9Mo">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Music!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6xP-vD-9Mo">
                                 <rect key="frame" x="16" y="218" width="288" height="127.5"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="32"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -233,8 +233,13 @@ You may also call a person by using questions like 'use the phone' or 'Call dad'
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mp4-Hk-d79">
                                 <rect key="frame" x="16" y="345.5" width="288" height="222.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Find lyrics for songs you love. Send a query in the format : 'SongName-SingerName' Example : Lose Yourself - Eminem" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f51-vY-Zld">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f51-vY-Zld">
                                         <rect key="frame" x="20" y="20" width="248" height="182.5"/>
+                                        <string key="text">Play a song or find lyrics for songs you love.             
+To play a song : 'Play Mocking Bird Eminem'   
+          
+To find lyrics : 'Mocking Bird-Eminem'       
+</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>

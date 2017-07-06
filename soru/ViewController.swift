@@ -125,7 +125,8 @@ class ViewController: JSQMessagesViewController{
     
     @IBAction func musicToggle(_ sender: UIBarButtonItem) {
         
-        webView.isHidden = !(webView.isHidden)
+        toggleWebView(show: webView.isHidden)
+      //  webView.isHidden = !(webView.isHidden)
     }
     
     // Function handling errors with Tone Analyzer
@@ -793,7 +794,8 @@ class ViewController: JSQMessagesViewController{
         
         let escapedQuery = query.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
         webView.loadRequest(URLRequest(url: URL(string: "http://www.gaana.com/search/"+escapedQuery!)!))
-        webView.isHidden = false
+        toggleWebView(show: true)
+        //webView.isHidden = false
         
     }
     
@@ -840,7 +842,8 @@ class ViewController: JSQMessagesViewController{
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        webView.isHidden = true
+        toggleWebView(show: false)
+      //  webView.isHidden = true
     }
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, didTapMessageBubbleAt indexPath: IndexPath!) {
         if(!self.conversationMessages[indexPath.row].isMediaMessage){
@@ -875,6 +878,24 @@ class ViewController: JSQMessagesViewController{
     }
     
    
+    
+    func toggleWebView( show : Bool){
+        if(show){
+            UIView.animate(withDuration: 0.4, delay: 0, options: .curveEaseOut, animations: {
+                self.webView.alpha = 1 // Here you will get the animation you want
+            }, completion: { _ in
+                self.webView.isHidden = false // Here you hide it when animation done
+            })
+        }else{
+            UIView.animate(withDuration: 0.4, delay: 0, options: .curveEaseOut, animations: {
+                self.webView.alpha = 0 // Here you will get the animation you want
+            }, completion: { _ in
+                self.webView.isHidden = true // Here you hide it when animation done
+            })
+            
+        }
+        
+    }
     
     
 
@@ -979,6 +1000,7 @@ func getColor(color : String, itemType: String)->UIColor{
         
         
     }
+  
     
     return UIColor.white
     
