@@ -64,10 +64,14 @@ class HelpViewController : UIPageViewController, UIPageViewControllerDataSource{
         
         return orderedViewControllers[nextIndex]
     }
+    
+    
     private func newViewController(_ name: String) -> UIViewController {
         return UIStoryboard(name: "Main", bundle: nil) .
             instantiateViewController(withIdentifier: "\(name)View")
     }
+    
+    
     func presentationCount(for pageViewController: UIPageViewController) -> Int {
         return 5
     }

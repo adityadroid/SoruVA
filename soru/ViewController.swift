@@ -9,13 +9,13 @@ import BMSCore
 //FIND WEATHER
 //MAKE A PHONE CALL
 //GET IMAGE FROM UNSPLASH
-//OPEN MAPS
+//OPEN MAPSfou
 //GET INTRO FROM WIKIPEDIA
 //GET RESPONSE FROM IBM WATSON
 //GET ANSWERS FROM WOLFRAM ALPHA
 //GET LYRICS OF A SONG
 
-
+//https://github.com/watson-developer-cloud/simple-chat-swift/blob/master/tutorial.md#simple-chat-app
 
 var currentImage : UIImage!
 
@@ -77,7 +77,8 @@ class ViewController: JSQMessagesViewController{
         // Set the Watson credentials for Conversation service from the BMSCredentials.plist
         let conversationPassword = configuration?["conversationPassword"] as! String
         let conversationUsername = configuration?["conversationUsername"] as! String
-        let conversationWorkspaceID = "79feeb83-33d1-498c-8ef8-cb71bb8ef4f6"
+        let conversationWorkspaceID = "fc1c59a6-503b-4022-bdba-34ec7430eae7"
+       // let conversationWorkspaceID = "79feeb83-33d1-498c-8ef8-cb71bb8ef4f6"
         self.workspaceID = conversationWorkspaceID
         // Create date format for Conversation service version
         let version = "2016-12-15"
@@ -364,7 +365,7 @@ class ViewController: JSQMessagesViewController{
                     
                     //if(watsonMessage == "Sure, Respond with \"Song Name - Artist Name\""){
                         let items = response.input?.text.components(separatedBy: "-")
-                        print(items)
+                        print(items!)
                         self.getLyrics(items![0], items![1])
                         
                    // }
@@ -373,9 +374,10 @@ class ViewController: JSQMessagesViewController{
                 
                 break
             
-            case "weather","lyrics_search":
+            case "weather","lyrics_search","about_VA":
                 break
             
+           
                 default:
                     self.getWolframAlphaResponse((response.input?.text)!)
 
@@ -470,6 +472,7 @@ class ViewController: JSQMessagesViewController{
         if(UIApplication.shared.canOpenURL(url!)){
             print("Can Open")
       //  UIApplication.shared.open( URL(string: number)! , options: nil, completionHandler: nil)
+            
         UIApplication.shared.openURL(url!)
         }
     }

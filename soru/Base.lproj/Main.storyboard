@@ -445,10 +445,10 @@ Example : Find me a picture of a bear</string>
                             <constraint firstItem="DGS-G7-paO" firstAttribute="top" secondItem="uRY-nP-HPx" secondAttribute="top" id="8Dh-VG-NsG"/>
                             <constraint firstItem="P0H-lu-C1W" firstAttribute="leading" secondItem="uRY-nP-HPx" secondAttribute="leadingMargin" constant="-16" id="HXr-1i-4e5"/>
                             <constraint firstAttribute="trailingMargin" secondItem="P0H-lu-C1W" secondAttribute="trailing" constant="-16" id="Jbh-in-ZS4"/>
-                            <constraint firstItem="P0H-lu-C1W" firstAttribute="top" secondItem="EdF-lz-XDD" secondAttribute="bottom" id="OJR-qU-W77"/>
-                            <constraint firstItem="mRP-My-bdA" firstAttribute="top" secondItem="P0H-lu-C1W" secondAttribute="bottom" id="ORQ-fM-D48"/>
+                            <constraint firstItem="P0H-lu-C1W" firstAttribute="top" secondItem="EdF-lz-XDD" secondAttribute="bottom" id="U8Y-Vr-vyN"/>
                             <constraint firstItem="DGS-G7-paO" firstAttribute="leading" secondItem="uRY-nP-HPx" secondAttribute="leading" id="Vfx-50-30f"/>
-                            <constraint firstItem="mRP-My-bdA" firstAttribute="top" secondItem="DGS-G7-paO" secondAttribute="bottom" id="XFp-Xc-uML"/>
+                            <constraint firstItem="mRP-My-bdA" firstAttribute="top" secondItem="P0H-lu-C1W" secondAttribute="bottom" id="p4L-2f-RrS"/>
+                            <constraint firstItem="mRP-My-bdA" firstAttribute="top" secondItem="DGS-G7-paO" secondAttribute="bottom" id="r4C-8B-SNd"/>
                         </constraints>
                     </view>
                     <connections>
@@ -505,7 +505,6 @@ Example : Find me a picture of a bear</string>
                                                 </button>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ztd-fM-hGW">
                                                     <rect key="frame" x="253" y="2" width="25" height="21"/>
-                                                    <color key="backgroundColor" red="0.90588235289999997" green="0.29803921570000003" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="25" id="6hB-Xq-7gL"/>
                                                         <constraint firstAttribute="height" constant="21" id="MSB-qY-69A"/>
@@ -553,7 +552,7 @@ Example : Find me a picture of a bear</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ip9-qf-39Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1812" y="277.51124437781112"/>
+            <point key="canvasLocation" x="1811.25" y="276.76056338028167"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="IQI-IE-ugP">
