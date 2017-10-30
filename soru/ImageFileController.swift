@@ -55,7 +55,7 @@ class ImageFileController : UIViewController, UIScrollViewDelegate{
         })
     }
     
-    func removeAnimate()
+    @objc func removeAnimate()
     {
         UIView.animate(withDuration: 0.25, animations: {
             self.view.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)

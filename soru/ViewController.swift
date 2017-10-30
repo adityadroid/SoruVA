@@ -77,7 +77,7 @@ class ViewController: JSQMessagesViewController{
         // Set the Watson credentials for Conversation service from the BMSCredentials.plist
         let conversationPassword = configuration?["conversationPassword"] as! String
         let conversationUsername = configuration?["conversationUsername"] as! String
-        let conversationWorkspaceID = "fc1c59a6-503b-4022-bdba-34ec7430eae7"
+        let conversationWorkspaceID = "6dd884b7-1892-45b2-9691-2e362f1896d7"
        // let conversationWorkspaceID = "79feeb83-33d1-498c-8ef8-cb71bb8ef4f6"
         self.workspaceID = conversationWorkspaceID
         // Create date format for Conversation service version
@@ -114,7 +114,7 @@ class ViewController: JSQMessagesViewController{
         return true
     }
    
-    func didBecomeActive(_ notification: Notification) {
+   @objc func didBecomeActive(_ notification: Notification) {
         
         
     }
@@ -574,6 +574,7 @@ class ViewController: JSQMessagesViewController{
     }
     
     
+    
     //OPEN MAPS
     
     func openNavigation(_ loc : String){
@@ -707,7 +708,7 @@ class ViewController: JSQMessagesViewController{
                     
                     
                     let unwrappedData = NSMutableString(data: data, encoding: String.Encoding.utf8.rawValue)
-                    print(unwrappedData)
+                    print(unwrappedData!)
                     if(unwrappedData != "Wolfram|Alpha did not understand your input"){
                         self.displayMessage(unwrappedData! as String)
                         
@@ -814,10 +815,10 @@ class ViewController: JSQMessagesViewController{
             let accent = UserDefaults.standard.string(forKey: "accent")
             let user = UserDefaults.standard.string(forKey: "user")
             let watson = UserDefaults.standard.string(forKey: "watson")
-            print("Primary theme",primary)
-            print("Accent",accent)
-            print("User",user)
-            print("Watson",watson)
+            print("Primary theme",primary!)
+            print("Accent",accent!)
+            print("User",user!)
+            print("Watson",watson!)
             
             self.inputToolbar.contentView.rightBarButtonItem.tintColor = getColor(color: accent!,itemType: "accent")
             navigationController?.navigationBar.barTintColor = getColor(color: primary!,itemType: "primary")

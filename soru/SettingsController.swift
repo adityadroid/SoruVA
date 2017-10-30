@@ -13,9 +13,10 @@ class SettingsController : UIViewController, UITableViewDelegate, UITableViewDat
     let items = ["Primary Color", "Secondary Color", "User Chat Bubble", "Watson Chat Bubble"]
     
     var currentCell : SettingsCell!
-    
+    var ceesd : UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
+    
     }
     
     

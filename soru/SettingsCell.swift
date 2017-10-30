@@ -14,4 +14,5 @@ public class SettingsCell : UITableViewCell{
     @IBOutlet weak var settingTitle: UIButton!
     
     @IBOutlet weak var settingTile: UIView!
+    
 }

@@ -95,16 +95,16 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search !" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lyE-D1-2Zy">
-                                <rect key="frame" x="16" y="218" width="288" height="127.5"/>
+                                <rect key="frame" x="16" y="218" width="288" height="128"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="32"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dI4-7W-OtM">
-                                <rect key="frame" x="16" y="345.5" width="288" height="222.5"/>
+                                <rect key="frame" x="16" y="346" width="288" height="222"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w9W-y5-al8">
-                                        <rect key="frame" x="20" y="20" width="248" height="182.5"/>
+                                        <rect key="frame" x="20" y="20" width="248" height="182"/>
                                         <string key="text">Ask different questions or ask for a wiki of a famous person. Use 'Who is' with a person name (first alphabet of person name capitalized) for better results.
 Example : Who is Narendra Modi? 
 What is the width of earth?</string>
@@ -160,16 +160,16 @@ What is the width of earth?</string>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Find Weather !" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ugf-LP-3vB">
-                                <rect key="frame" x="16" y="218" width="288" height="127.5"/>
+                                <rect key="frame" x="16" y="218" width="288" height="128"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="32"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SAn-8d-mEh">
-                                <rect key="frame" x="16" y="345.5" width="288" height="222.5"/>
+                                <rect key="frame" x="16" y="346" width="288" height="222"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vhJ-Gm-OVb">
-                                        <rect key="frame" x="20" y="20" width="248" height="182.5"/>
+                                        <rect key="frame" x="20" y="20" width="248" height="182"/>
                                         <string key="text">Find weather forecast for different locations.
 Example : What's the weather?
 You may also call a person by using questions like 'use the phone' or 'Call dad'</string>
@@ -225,16 +225,16 @@ You may also call a person by using questions like 'use the phone' or 'Call dad'
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Music!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6xP-vD-9Mo">
-                                <rect key="frame" x="16" y="218" width="288" height="127.5"/>
+                                <rect key="frame" x="16" y="218" width="288" height="128"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="32"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mp4-Hk-d79">
-                                <rect key="frame" x="16" y="345.5" width="288" height="222.5"/>
+                                <rect key="frame" x="16" y="346" width="288" height="222"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f51-vY-Zld">
-                                        <rect key="frame" x="20" y="20" width="248" height="182.5"/>
+                                        <rect key="frame" x="20" y="20" width="248" height="182"/>
                                         <string key="text">Play a song or find lyrics for songs you love.             
 To play a song : 'Play Mocking Bird Eminem'   
           
@@ -292,16 +292,16 @@ To find lyrics : 'Mocking Bird-Eminem'
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Find Places !" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="40u-LW-0f9">
-                                <rect key="frame" x="16" y="218" width="288" height="127.5"/>
+                                <rect key="frame" x="16" y="218" width="288" height="128"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="32"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LXq-FB-2mf">
-                                <rect key="frame" x="16" y="345.5" width="288" height="222.5"/>
+                                <rect key="frame" x="16" y="346" width="288" height="222"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oad-vX-mBk">
-                                        <rect key="frame" x="20" y="20" width="248" height="182.5"/>
+                                        <rect key="frame" x="20" y="20" width="248" height="182"/>
                                         <string key="text">Find places near you. Search for restaurants, schools, airports, railway stations. Use keywords like 'Find' and 'Where' for better results.
 Example : Find me a Petrol Pump</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -356,16 +356,16 @@ Example : Find me a Petrol Pump</string>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Explore Images !" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UIY-Ex-Lfk">
-                                <rect key="frame" x="16" y="218" width="288" height="127.5"/>
+                                <rect key="frame" x="16" y="218" width="288" height="128"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="32"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2pK-9L-qxc">
-                                <rect key="frame" x="16" y="345.5" width="288" height="222.5"/>
+                                <rect key="frame" x="16" y="346" width="288" height="222"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jwi-HM-NkW">
-                                        <rect key="frame" x="20" y="20" width="248" height="182.5"/>
+                                        <rect key="frame" x="20" y="20" width="248" height="182"/>
                                         <string key="text">Find images of different places and objects. Use keywords 'Image of' , 'Picture of', ' Photo of' for better results.
 Example : Find me a picture of a bear</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
